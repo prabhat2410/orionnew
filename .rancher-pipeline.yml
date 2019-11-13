@@ -11,5 +11,11 @@ stages:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+  - applyYamlConfig:
+      path: ./service.yaml
 timeout: 60
 notification: {}
