@@ -12,7 +12,7 @@ spec:
       containers:
       
       - name: orion
-        image: csp2-centos-4:5000/fiware-orion
+        image: csp2-centos-1:5000/fiware-orion
         resources:
          limits:
           memory: "500Mi"
@@ -23,3 +23,22 @@ spec:
         ports:
         - containerPort: 1026
         args: ["-dbhost", "mongo-1.mongo,mongo-0.mongo,mongo-2.mongo", "-rplSet" ,"rs0", "-logLevel", "DEBUG"]
+---		
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: orion-service
+  labels:
+    name: orionservice-nodeport-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 1026
+      nodePort: 30180
+      name: http
+    - port: 443
+      nodePort: 31443
+      name: https
+  selector:
+    name: broker
