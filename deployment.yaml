@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 1026
         args: ["-dbhost", "mongo-1.mongo,mongo-0.mongo,mongo-2.mongo", "-rplSet" ,"rs0", "-logLevel", "DEBUG"]
----		
+---
 
 apiVersion: v1
 kind: Service
@@ -35,10 +35,7 @@ spec:
   type: NodePort
   ports:
     - port: 1026
-      nodePort: 30180
-      name: http
-    - port: 443
       nodePort: 31444
-      name: https
+      name: http
   selector:
     name: broker
