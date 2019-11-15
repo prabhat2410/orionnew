@@ -38,7 +38,7 @@ spec:
       nodePort: 30180
       name: http
     - port: 443
-      nodePort: 31443
+      nodePort: 31444
       name: https
   selector:
     name: broker
