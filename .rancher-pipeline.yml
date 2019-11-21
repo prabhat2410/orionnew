@@ -18,7 +18,7 @@ stages:
 - name: JmeterOrionTest
   steps:
   - runScriptConfig:
-      image: xml
+      image: xml:3-ant-3
       shellScript: |
         <?xml version="1.0" encoding="UTF-8"?>
         <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
