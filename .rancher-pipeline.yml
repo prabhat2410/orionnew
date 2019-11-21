@@ -18,7 +18,7 @@ stages:
 - name: JmeterOrionTest
   steps:
   - runScriptConfig:
-      image: jason
+      image: java:8
       shellScript: |-
         {
           jmeterTestPlan: {
