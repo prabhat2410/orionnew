@@ -90,7 +90,6 @@ stages:
         {\n\t\t\t\t\t\t\"_name\": \"filename\"\n\t\t\t\t\t},\n\t\t\t\t\t\"_guiclass\":
         \"ViewResultsFullVisualizer\",\n\t\t\t\t\t\"_testclass\": \"ResultCollector\",\n\t\t\t\t\t\"_testname\":
         \"View Results Tree\",\n\t\t\t\t\t\"_enabled\": \"true\"\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t\"_version\":
-        \"1.2\",\n\t\t\"_properties\": \"5.0\",\n\t\t\"_jmeter\": \"5.1.1 r1855137\"\n\t\t}\n
-        \       "
+        \"1.2\",\n\t\t\"_properties\": \"5.0\",\n\t\t\"_jmeter\": \"5.1.1 r1855137\"\n\t\t}\"\n\t}\t\n"
 timeout: 60
 notification: {}
