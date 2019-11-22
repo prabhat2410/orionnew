@@ -19,6 +19,11 @@ stages:
         include:
         - pull_request
         - push
+  - runScriptConfig:
+      image: java:8
+      shellScript: |-
+        echo "abc" >> abc.txt
+        cat abc.txt
 - name: deploy
   steps:
   - applyYamlConfig:
