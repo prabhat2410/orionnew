@@ -29,224 +29,224 @@ stages:
       image: java:8
       shellScript: |
         {
-          jmeterTestPlan: {
-            hashTree: {
-              TestPlan: {
-                stringProp: [
+          "jmeterTestPlan": {
+            "hashTree": {
+              "TestPlan": {
+                "stringProp": [
                   {
-                    _name: 'TestPlan.comments'
+                    "_name": "TestPlan.comments"
                   },
                   {
-                    _name: 'TestPlan.user_define_classpath'
+                    "_name": "TestPlan.user_define_classpath"
                   }
                 ],
-                boolProp: [
+                "boolProp": [
                   {
-                    _name: 'TestPlan.functional_mode',
-                    __text: 'false'
+                    "_name": "TestPlan.functional_mode",
+                    "__text": "false"
                   },
                   {
-                    _name: 'TestPlan.tearDown_on_shutdown',
-                    __text: 'true'
+                    "_name": "TestPlan.tearDown_on_shutdown",
+                    "__text": "true"
                   },
                   {
-                    _name: 'TestPlan.serialize_threadgroups',
-                    __text: 'false'
+                    "_name": "TestPlan.serialize_threadgroups",
+                    "__text": "false"
                   }
                 ],
-                elementProp: {
-                  collectionProp: {
-                    _name: 'Arguments.arguments'
+                "elementProp": {
+                  "collectionProp": {
+                    "_name": "Arguments.arguments"
                   },
-                  _name: 'TestPlan.user_defined_variables',
-                  _elementType: 'Arguments',
-                  _guiclass: 'ArgumentsPanel',
-                  _testclass: 'Arguments',
-                  _testname: 'User Defined Variables',
-                  _enabled: 'true'
+                  "_name": "TestPlan.user_defined_variables",
+                  "_elementType": "Arguments",
+                  "_guiclass": "ArgumentsPanel",
+                  "_testclass": "Arguments",
+                  "_testname": "User Defined Variables",
+                  "_enabled": "true"
                 },
-                _guiclass: 'TestPlanGui',
-                _testclass: 'TestPlan',
-                _testname: 'Test Plan',
-                _enabled: 'true'
+                "_guiclass": "TestPlanGui",
+                "_testclass": "TestPlan",
+                "_testname": "Test Plan",
+                "_enabled": "true"
               },
-              hashTree: {
-                ThreadGroup: {
-                  stringProp: [
+              "hashTree": {
+                "ThreadGroup": {
+                  "stringProp": [
                     {
-                      _name: 'ThreadGroup.on_sample_error',
-                      __text: 'continue'
+                      "_name": "ThreadGroup.on_sample_error",
+                      "__text": "continue"
                     },
                     {
-                      _name: 'ThreadGroup.num_threads',
-                      __text: '1'
+                      "_name": "ThreadGroup.num_threads",
+                      "__text": "1"
                     },
                     {
-                      _name: 'ThreadGroup.ramp_time',
-                      __text: '1'
+                      "_name": "ThreadGroup.ramp_time",
+                      "__text": "1"
                     },
                     {
-                      _name: 'ThreadGroup.duration'
+                      "_name": "ThreadGroup.duration"
                     },
                     {
-                      _name: 'ThreadGroup.delay'
+                      "_name": "ThreadGroup.delay"
                     }
                   ],
-                  elementProp: {
-                    boolProp: {
-                      _name: 'LoopController.continue_forever',
-                      __text: 'false'
+                  "elementProp": {
+                    "boolProp": {
+                      "_name": "LoopController.continue_forever",
+                      "__text": "false"
                     },
-                    intProp: {
-                      _name: 'LoopController.loops',
-                      __text: '-1'
+                    "intProp": {
+                      "_name": "LoopController.loops",
+                      "__text":"'-1"
                     },
-                    _name: 'ThreadGroup.main_controller',
-                    _elementType: 'LoopController',
-                    _guiclass: 'LoopControlPanel',
-                    _testclass: 'LoopController',
-                    _testname: 'Loop Controller',
-                    _enabled: 'true'
+                    "_name": "ThreadGroup.main_controller",
+                    "_elementType": "LoopController",
+                    "_guiclass": "LoopControlPanel",
+                    "_testclass": "LoopController",
+                    "_testname": "Loop Controller",
+                    "_enabled": "true"
                   },
-                  boolProp: {
-                    _name: 'ThreadGroup.scheduler',
-                    __text: 'false'
+                  "boolProp": {
+                    "_name": "ThreadGroup.scheduler",
+                    "__text": "false"
                   },
-                  _guiclass: 'ThreadGroupGui',
-                  _testclass: 'ThreadGroup',
-                  _testname: 'Orion_version',
-                  _enabled: 'true'
+                  "_guiclass": "ThreadGroupGui",
+                  "_testclass": "ThreadGroup",
+                  "_testname": "Orion_version",
+                  "_enabled": "true"
                 },
-                hashTree: [
+                "hashTree": [
                   {
-                    HTTPSamplerProxy: {
-                      elementProp: {
-                        collectionProp: {
-                          _name: 'Arguments.arguments'
+                    "HTTPSamplerProxy": {
+                      "elementProp": {
+                        "collectionProp": {
+                          "_name": "Arguments.arguments"
                         },
-                        _name: 'HTTPsampler.Arguments',
-                        _elementType: 'Arguments',
-                        _guiclass: 'HTTPArgumentsPanel',
-                        _testclass: 'Arguments',
-                        _testname: 'User Defined Variables',
-                        _enabled: 'true'
+                        "_name": "HTTPsampler.Arguments",
+                        "_elementType": "Arguments",
+                        "_guiclass": "HTTPArgumentsPanel",
+                        "_testclass": "Arguments",
+                        "_testname": "User Defined Variables",
+                        "_enabled": "true"
                       },
-                      stringProp: [
+                      "stringProp": [
                         {
-                          _name: 'HTTPSampler.domain',
-                          __text: '192.168.100.108'
+                          "_name": "HTTPSampler.domain",
+                          "__text": "192.168.100.108"
                         },
                         {
-                          _name: 'HTTPSampler.port',
-                          __text: '30180'
+                          "_name": "HTTPSampler.port",
+                          "__text": "30180"
                         },
                         {
-                          _name: 'HTTPSampler.protocol'
+                          "_name": "HTTPSampler.protocol"
                         },
                         {
-                          _name: 'HTTPSampler.contentEncoding'
+                          "_name": "HTTPSampler.contentEncoding"
                         },
                         {
-                          _name: 'HTTPSampler.path',
-                          __text: '/version'
+                          "_name": "HTTPSampler.path",
+                          "__text":"'/version"
                         },
                         {
-                          _name: 'HTTPSampler.method',
-                          __text: 'GET'
+                          "_name": "HTTPSampler.method",
+                          "__text": "GET"
                         },
                         {
-                          _name: 'HTTPSampler.embedded_url_re'
+                          "_name": "HTTPSampler.embedded_url_re"
                         },
                         {
-                          _name: 'HTTPSampler.implementation',
-                          __text: 'HttpClient4'
+                          "_name": "HTTPSampler.implementation",
+                          "__text": "HttpClient4"
                         },
                         {
-                          _name: 'HTTPSampler.connect_timeout'
+                          "_name": "HTTPSampler.connect_timeout"
                         },
                         {
-                          _name: 'HTTPSampler.response_timeout',
-                          __text: '500000'
+                          "_name": "HTTPSampler.response_timeout",
+                          "__text": "500000"
                         }
                       ],
-                      boolProp: [
+                      "boolProp": [
                         {
-                          _name: 'HTTPSampler.follow_redirects',
-                          __text: 'true'
+                          "_name": "HTTPSampler.follow_redirects",
+                          "__text": "true"
                         },
                         {
-                          _name: 'HTTPSampler.auto_redirects',
-                          __text: 'false'
+                          "_name": "HTTPSampler.auto_redirects",
+                          "__text": "false"
                         },
                         {
-                          _name: 'HTTPSampler.use_keepalive',
-                          __text: 'true'
+                          "_name": "HTTPSampler.use_keepalive",
+                          "__text": "true"
                         },
                         {
-                          _name: 'HTTPSampler.DO_MULTIPART_POST',
-                          __text: 'false'
+                          "_name": "HTTPSampler.DO_MULTIPART_POST",
+                          "__text": "false"
                         }
                       ],
-                      _guiclass: 'HttpTestSampleGui',
-                      _testclass: 'HTTPSamplerProxy',
-                      _testname: 'HTTP Request',
-                      _enabled: 'true'
+                      "_guiclass": "HttpTestSampleGui",
+                      "_testclass": "HTTPSamplerProxy",
+                      "_testname": "HTTP Request",
+                      "_enabled": "true"
                     },
-                    hashTree: ''
+                    "hashTree":"
                   },
-                  ''
+                  "
                 ],
-                ResultCollector: {
-                  boolProp: {
-                    _name: 'ResultCollector.error_logging',
-                    __text: 'false'
+                "ResultCollector": {
+                  "boolProp": {
+                    "_name": "ResultCollector.error_logging",
+                    "__text": "false"
                   },
-                  objProp: {
-                    name: 'saveConfig',
-                    value: {
-                      time: 'true',
-                      latency: 'true',
-                      timestamp: 'true',
-                      success: 'true',
-                      label: 'true',
-                      code: 'true',
-                      message: 'true',
-                      threadName: 'true',
-                      dataType: 'true',
-                      encoding: 'false',
-                      assertions: 'true',
-                      subresults: 'true',
-                      responseData: 'false',
-                      samplerData: 'false',
-                      xml: 'false',
-                      fieldNames: 'true',
-                      responseHeaders: 'false',
-                      requestHeaders: 'false',
-                      responseDataOnError: 'false',
-                      saveAssertionResultsFailureMessage: 'true',
-                      assertionsResultsToSave: '0',
-                      bytes: 'true',
-                      sentBytes: 'true',
-                      url: 'true',
-                      threadCounts: 'true',
-                      idleTime: 'true',
-                      connectTime: 'true',
-                      _class: 'SampleSaveConfiguration'
+                  "objProp": {
+                    "name": "saveConfig",
+                    "value": {
+                      "time": "true",
+                      "latency": "true",
+                      "timestamp": "true",
+                      "success": "true",
+                      "label": "true",
+                      "code": "true",
+                      "message": "true",
+                      "threadName": "true",
+                      "dataType": "true",
+                      "encoding": "false",
+                      "assertions": "true",
+                      "subresults": "true",
+                      "responseData": "false",
+                      "samplerData": "false",
+                      "xml": "false",
+                      "fieldNames": "true",
+                      "responseHeaders": "false",
+                      "requestHeaders": "false",
+                      "responseDataOnError": "false",
+                      "saveAssertionResultsFailureMessage": "true",
+                      "assertionsResultsToSave": "0",
+                      "bytes": "true",
+                      "sentBytes": "true",
+                      "url": "true",
+                      "threadCounts": "true",
+                      "idleTime": "true",
+                      "connectTime": "true",
+                      "_class": "SampleSaveConfiguration"
                     }
                   },
-                  stringProp: {
-                    _name: 'filename'
+                  "stringProp": {
+                    "_name": "filename"
                   },
-                  _guiclass: 'ViewResultsFullVisualizer',
-                  _testclass: 'ResultCollector',
-                  _testname: 'View Results Tree',
-                  _enabled: 'true'
+                  "_guiclass": "ViewResultsFullVisualizer",
+                  "_testclass": "ResultCollector",
+                  "_testname": "View Results Tree",
+                  "_enabled": "true"
                 }
               }
             },
-            _version: '1.2',
-            _properties: '5.0',
-            _jmeter: '5.1.1 r1855137'
+            "_version": "1.2",
+            "_properties": "5.0",
+            "_jmeter": "5.1.1 r1855137"
           }
         }
 timeout: 60
