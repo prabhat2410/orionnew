@@ -27,6 +27,6 @@ stages:
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: kubectl get -n kubernauts po jmeter-master-7774f59cb4-9xqfk
+      shellScript: sudo docker get -n kubernauts po jmeter-master-7774f59cb4-9xqfk
 timeout: 60
 notification: {}
