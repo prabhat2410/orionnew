@@ -28,6 +28,7 @@ stages:
   - runScriptConfig:
       image: java:8
       shellScript: |-
+        docker exec -it 395a05fe8946 /bin/bash
         /jmeter/apache-jmeter-5.0/bin
         jmeter -n -t Orion-new.jmx -l result123.jtl
 timeout: 60
