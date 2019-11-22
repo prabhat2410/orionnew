@@ -28,7 +28,7 @@ stages:
   - runScriptConfig:
       image: java:8
       shellScript: |-
-        cd /jmeter/apache-jmeter-5.0/bin
+        /jmeter/apache-jmeter-5.0/bin
         jmeter -n -t Orion-new.jmx -l result123.jtl
 timeout: 60
 notification: {}
