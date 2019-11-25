@@ -29,5 +29,6 @@
 
 
 #define ORION_VERSION "2.2.0"
-
+//test code
+test5=
 #endif  // SRC_APP_CONTEXTBROKER_VERSION_H_
