@@ -47,7 +47,7 @@ stages:
         echo "Host is `hostname -I`"
         `pwd`
 
-        ssh-keygen -t rsa -f /home/jenkins/.ssh
+        `ssh-keygen -t rsa -f /home/jenkins/`
         #ssh-keygen -R 192.168.100.176
 
         #ssh -tt centos@192.168.100.176
