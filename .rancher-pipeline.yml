@@ -65,6 +65,6 @@ stages:
 
         ## Echo Starting Jmeter load test
 
-        kubectl --kubeconfig=176-config exec -ti -n $tenant $master_pod -- /bin/bash /load_test "$test_name"
+        kubectl --kubeconfig=176-config exec -ti -n $tenant $master_pod -- /bin/bash /jmeter/apache-jmeter-5.0/bin/jmeter -n -t "$test_name"
 timeout: 60
 notification: {}
