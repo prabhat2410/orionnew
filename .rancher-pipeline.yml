@@ -39,17 +39,43 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "#!/bin/bash\n#Get namesapce variable\n#tenant=`awk '{print $NF}'
-        \"$working_dir/tenant_export\"`\n\necho \"Host is `hostname -I`\"\n#`pwd`\n#`ls`\n\n#ssh-keygen
-        -t rsa -R hostname -f /root  \nssh -tt centos@192.168.100.176\n\ntenent=\"jmeter\"\necho
-        \"PWD\"\necho \"`pwd`\"\n\njmx=\"/jmeter/apache-jmeter-5.0/bin/scriptOrion.jmx\"\n#[
-        -n \"$jmx\" ] || read -p 'Enter path to the jmx file ' jmx\n\nif [ ! -f \"$jmx\"
-        ];\nthen\n    echo \"Test script file was not found in PATH\"\n    echo \"Kindly
-        check and input the correct file path\"\n    exit\nfi\n\ntest_name=\"scriptOrion.jmx\"\n\n#Get
-        Master pod details\n\nmaster_pod=`kubectl --kubeconfig=176-config get po -n
-        $tenant | grep jmeter-master | awk '{print $1}'`\n\nkubectl cp \"$jmx\" -n
-        $tenant \"$master_pod:/$test_name\"\n\n## Echo Starting Jmeter load test\n\nkubectl
-        --kubeconfig=176-config exec -ti -n $tenant $master_pod -- /bin/bash /jmeter/apache-jmeter-5.0/bin/jmeter
-        -n -t \"$test_name\"\n"
+      shellScript: |
+        #!/bin/bash
+        #Get namesapce variable
+        #tenant=`awk '{print $NF}' "$working_dir/tenant_export"`
+
+        echo "Host is `hostname -I`"
+        #`pwd`
+        #`ls`
+
+        ssh-keygen -R 192.168.100.176
+
+        ssh -tt centos@192.168.100.176
+
+        tenent="jmeter"
+        echo "PWD"
+        echo "`pwd`"
+
+        jmx="/jmeter/apache-jmeter-5.0/bin/scriptOrion.jmx"
+        #[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
+
+        if [ ! -f "$jmx" ];
+        then
+            echo "Test script file was not found in PATH"
+            echo "Kindly check and input the correct file path"
+            exit
+        fi
+
+        test_name="scriptOrion.jmx"
+
+        #Get Master pod details
+
+        master_pod=`kubectl --kubeconfig=176-config get po -n $tenant | grep jmeter-master | awk '{print $1}'`
+
+        kubectl cp "$jmx" -n $tenant "$master_pod:/$test_name"
+
+        ## Echo Starting Jmeter load test
+
+        kubectl --kubeconfig=176-config exec -ti -n $tenant $master_pod -- /bin/bash /jmeter/apache-jmeter-5.0/bin/jmeter -n -t "$test_name"
 timeout: 60
 notification: {}
