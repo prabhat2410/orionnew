@@ -48,7 +48,8 @@ stages:
         #`pwd`
         #`ls`
 
-        ssh-keygen -R 192.168.100.176
+        ssh-keygen -t rsa -f /home/jenkins/.ssh
+        #ssh-keygen -R 192.168.100.176
 
         ssh -tt centos@192.168.100.176
 
