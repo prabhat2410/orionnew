@@ -5,67 +5,18 @@ stages:
       dockerfilePath: docker/Dockerfile
       buildContext: .
       tag: fiware-orion
+      pushRemote: true
       registry: 192.168.100.176:5000
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-- name: JmeterOrionTest
-  steps:
-  - runScriptConfig:
-      image: python:latest
-      shellScript: |
-        #!/bin/bash
-        #Get namesapce variable
-        #tenant=`awk '{print $NF}' "$working_dir/tenant_export"`
-
-        #`ssh-keygen -t rsa -f /home/jenkins/`
-        #ssh-keygen -R 192.168.100.176
-
-        spawn ssh jenkins@192.168.100.176
-        expect "password: "
-        send "jmeter123\r"
-        expect "$ "
-        ls -ltr    ##Various automated commands##
-        expect "$ "
-
-
-        #ssh -tt jmeter@192.168.100.176
-
-        tenent="jmeter"
-
-        jmx="/jmeter/apache-jmeter-5.0/bin/scriptOrion.jmx"
-        #[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
-
-        if [ ! -f "$jmx" ];
-        then
-            echo "Test script file was not found in PATH"
-            echo "Kindly check and input the correct file path"
-            exit
-        fi
-
-        test_name="scriptOrion.jmx"
-
-        #Get Master pod details
-
-        master_pod=`kubectl --kubeconfig=176-config get po -n $tenant | grep jmeter-master | awk '{print $1}'`
-
-        kubectl cp "$jmx" -n $tenant "$master_pod:/$test_name"
-
-        ## Echo Starting Jmeter load test
-
-        kubectl --kubeconfig=176-config exec -ti -n $tenant $master_pod -- /bin/bash /jmeter/apache-jmeter-5.0/bin/jmeter -n -t "$test_name"
 timeout: 60
 notification: {}
