@@ -44,13 +44,16 @@ stages:
         #Get namesapce variable
         #tenant=`awk '{print $NF}' "$working_dir/tenant_export"`
 
-        echo "Host is `hostname -I`"
-        `pwd`
-
         #`ssh-keygen -t rsa -f /home/jenkins/`
         #ssh-keygen -R 192.168.100.176
 
-        yum install expect
+        spawn ssh jenkins@192.168.100.176
+        expect "password: "
+        send "jmeter123\r"
+        expect "$ "
+        ls -ltr    ##Various automated commands##
+        expect "$ "
+
 
         #ssh -tt jmeter@192.168.100.176
 
