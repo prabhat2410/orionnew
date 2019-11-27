@@ -49,8 +49,8 @@ RUN \
     mv rapidjson-1.0.2/include/rapidjson/ /usr/local/include && \
     # Install orion from source
     git clone https://github.com/prabhat2410/Orion && \
-    cd fiware-orion && \
-    git checkout ${GIT_REV_ORION} && \
+    cd Orion && \
+    #git checkout ${GIT_REV_ORION} && \
     make && \
     make install && \
     # reduce size of installed binaries
@@ -117,4 +117,3 @@ RUN \
 WORKDIR /
 ENTRYPOINT ["/usr/bin/contextBroker","-fg", "-multiservice", "-ngsiv1Autocast" ]
 EXPOSE 1026
-
