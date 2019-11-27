@@ -50,7 +50,9 @@ stages:
         #`ssh-keygen -t rsa -f /home/jenkins/`
         #ssh-keygen -R 192.168.100.176
 
-        ssh -tt jmeter@192.168.100.176
+        yum install expect
+
+        #ssh -tt jmeter@192.168.100.176
 
         tenent="jmeter"
 
