@@ -66,7 +66,7 @@ stages:
         echo "PWD"
         echo "`pwd`"
 
-        jmx="/jmeter/apache-jmeter-5.0/bin/new.jmx"
+        jmx="/jmeter/apache-jmeter-5.0/bin/Orion-new.jmx"
         #[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
 
         if [ ! -f "$jmx" ];
@@ -86,6 +86,6 @@ stages:
 
         ## Echo Starting Jmeter load test
 
-        kubectl exec -ti -n $tenant $master_pod -- /bin/bash /load_test "$test_name"
+        kubectl exec -ti -n $tenant $master_pod -- /bin/bash / "$test_name"
 timeout: 60
 notification: {}
