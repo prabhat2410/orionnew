@@ -69,6 +69,7 @@ stages:
         jmx=/jmeter/apache-jmeter-5.0/bin/Orion-new.jmx
         #[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
 
+        echo "$jmx"
         if [ ! -f "$jmx" ];
         then
             echo "Test script file was not found in PATH"
