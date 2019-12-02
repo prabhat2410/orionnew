@@ -27,5 +27,10 @@ stages:
   steps:
   - applyYamlConfig:
       path: Postman/Postman.yaml
+- name: test_demo
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: echo "Hello world !!"
 timeout: 60
 notification: {}
