@@ -27,10 +27,26 @@ stages:
   steps:
   - applyYamlConfig:
       path: Postman/Postman.yaml
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: test_demo
   steps:
   - runScriptConfig:
       image: python:latest
       shellScript: echo "Hello world !!"
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
