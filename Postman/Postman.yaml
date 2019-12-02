@@ -1,1 +1,18 @@
-
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: api-tests
+  namespace: updateandrollback
+spec:
+  parallelism: 1
+  template:
+    metadata:
+      name: api-tests
+    spec:
+      containers:
+      - name: api-tests
+        image: postman/newman:alpine
+        command: ["/bin/sh"]
+        args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --reporters cli --reporter-cli-no-failures"]
+        #args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --reporters cli --reporter-cli-no-failures"]
+      restartPolicy: Never
