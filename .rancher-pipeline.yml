@@ -12,11 +12,20 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+- name: test
+  steps:
+  - applyYamlConfig:
+      path: Postman/Postman.yaml
 timeout: 60
 notification: {}
