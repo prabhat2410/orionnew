@@ -18,5 +18,9 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+- name: Test
+  steps:
+  - applyYamlConfig:
+      path: ./Postman.yaml
 timeout: 60
 notification: {}
