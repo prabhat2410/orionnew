@@ -23,7 +23,7 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-- name: test
+- name: Postman test
   steps:
   - applyYamlConfig:
       path: Postman/Postman.yaml
