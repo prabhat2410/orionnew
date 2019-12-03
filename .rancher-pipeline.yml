@@ -28,26 +28,16 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: test_demo
   steps:
   - runScriptConfig:
       image: python:latest
       shellScript: echo "Hello world !!"
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: jmeter test
   steps:
   - runScriptConfig:
@@ -88,5 +78,13 @@ stages:
         ## Echo Starting Jmeter load test
 
         kubectl exec -ti -n $tenant $master_pod -- /bin/bash / "$test_name"
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
