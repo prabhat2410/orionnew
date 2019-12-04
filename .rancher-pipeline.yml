@@ -24,8 +24,13 @@ stages:
   - applyYamlConfig:
       path: ./deployment.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: Postman test
   steps:
   - applyYamlConfig:
