@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orion-service
+  namespace: ceph
   labels:
     name: orionservice-nodeport-svc
 spec:
