@@ -12,6 +12,6 @@ spec:
       - name: api-tests
         image: postman/newman:alpine
         command: ["/bin/sh"]
-        args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --bail --reporters cli --reporter-cli-no-failures"]
+        args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --reporters cli --reporter-cli-no-failures"]
         #args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --reporters cli --reporter-cli-no-failures"]
       restartPolicy: Never
