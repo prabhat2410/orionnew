@@ -55,6 +55,7 @@ stages:
         apt-get update
         apt-get install sshpass
         sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178
+
         #!/bin/bash
         #Script created to launch Jmeter tests directly from the current terminal without accessing the jmeter master pod.
         #It requires that you supply the path to the jmx file
@@ -71,12 +72,12 @@ stages:
         jmx="/jmeter/apache-jmeter-5.0/bin/Orion-new.jmx"
         [ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
 
-        if [ ! -f "$jmx" ];
-        then
-            echo "Test script file was not found in PATH"
-            echo "Kindly check and input the correct file path"
-           exit
-        fi
+        #if [ ! -f "$jmx" ];
+        #then
+        #    echo "Test script file was not found in PATH"
+        #    echo "Kindly check and input the correct file path"
+        #   exit
+        #fi
 
         test_name="$(basename "$jmx")"
 
