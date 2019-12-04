@@ -235,10 +235,6 @@ bool            ngsiv1Autocast;
 #define INSECURE_NOTIF         "allow HTTPS notifications to peers which certificate cannot be authenticated with known CA certificates"
 #define NGSIV1_AUTOCAST        "automatic cast for number, booleans and dates in NGSIv1 update/create attribute operations"
 
-//testing file ****prabhat****
-test1=
-
-
 /* ****************************************************************************
 *
 * paArgs - option vector for the Parse CLI arguments library
@@ -415,8 +411,6 @@ int pidFile(bool justCheck)
   return 0;
 }
 
-//to test the code 
-prabhat =
 
 /* ****************************************************************************
 *
