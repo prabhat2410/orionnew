@@ -36,8 +36,13 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: test_demo
   steps:
   - runScriptConfig:
