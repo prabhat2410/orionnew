@@ -50,8 +50,13 @@ stages:
       shellScript: |
         echo "Hello world !!"
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: jmeter test
   steps:
   - runScriptConfig:
