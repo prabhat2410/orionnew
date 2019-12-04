@@ -34,7 +34,7 @@ stages:
 - name: Postman test
   steps:
   - applyYamlConfig:
-      path: Postman/postman_test.yaml
+      path: Postman/Postmam.yaml
     when:
       branch: {}
       event: {}
