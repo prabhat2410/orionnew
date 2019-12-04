@@ -48,9 +48,9 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |-
-        ssh test@192.168.100.176 -P richa123
-        ls
         echo "Hello world !!"
+
+        sshpass -p mehant ssh mehant@192.168.100.178
     when:
       branch: {}
       event: {}
