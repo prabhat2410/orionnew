@@ -4,32 +4,23 @@ stages:
   - publishImageConfig:
       dockerfilePath: docker/Dockerfile
       buildContext: .
-      tag: fiware-orion-devops-image
-      registry: 192.168.100.176:5000
+      tag: fiware-orion
+      pushRemote: true
+      registry: 10.0.8.61:31484
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: Postman test
   steps:
   - applyYamlConfig:
@@ -99,7 +90,12 @@ stages:
 
         kubectl exec -ti -n $tenant $master_pod -- /bin/bash / "$test_name"
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
