@@ -142,9 +142,6 @@
 #include "rest/RestService.h"
 #include "rest/rest.h"
 #include "contextBroker/orionRestServices.h"
-//testing code
-test1=
-
 
 /* ****************************************************************************
 *
