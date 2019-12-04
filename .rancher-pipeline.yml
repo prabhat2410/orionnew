@@ -47,15 +47,13 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: echo "Hello world !!"
+      shellScript: |-
+        ssh test@192.168.100.176 -p richa123
+        ls
+        echo "Hello world !!"
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: jmeter test
   steps:
   - runScriptConfig:
