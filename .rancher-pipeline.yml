@@ -64,7 +64,7 @@ stages:
       shellScript: |-
         apt-get update
         apt-get install sshpass
-        sshpass -p mehant ssh mehant@192.168.100.178
+        sshpass -p mehant ssh -tt mehant@192.168.100.178
     when:
       branch: {}
       event: {}
