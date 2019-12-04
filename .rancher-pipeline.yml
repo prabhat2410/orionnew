@@ -70,7 +70,7 @@ stages:
         #It requires that you supply the path to the jmx file
         #After execution, test script jmx file may be deleted from the pod itself but not locally.
 
-        sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178
+        sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 <<EOF
         ls;
         working_dir="`pwd`"
 
