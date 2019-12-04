@@ -61,7 +61,9 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: sshpass -p mehant ssh mehant@192.168.100.178
+      shellScript: |-
+        apt-get install sshpass
+        sshpass -p mehant ssh mehant@192.168.100.178
     when:
       branch: {}
       event: {}
