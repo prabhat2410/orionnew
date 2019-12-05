@@ -22,7 +22,7 @@ stages:
 - name: Test_postman
   steps:
   - applyYamlConfig:
-      path: /Postman/Postman.yaml
+      path: Postman/Postman.yaml
 - name: demo_test
   steps:
   - runScriptConfig:
