@@ -49,6 +49,9 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |-
+        apt-get update
+        apt-get install sshpass
+
         #!/usr/bin/env bash
         # Script created to launch Jmeter tests with csv data files directly from the current terminal without accessing the jmeter master pod.
         # It requires that you supply the path to the directory with jmx file and csv files
