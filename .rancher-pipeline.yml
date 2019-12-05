@@ -12,7 +12,21 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
+- name: Test_postman
+  steps:
+  - applyYamlConfig:
+      path: /Postman/Postman.yaml
+- name: demo_test
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: echo "hello world
 timeout: 60
 notification: {}
