@@ -68,12 +68,12 @@ stages:
         pod itself but not locally.\n\nsshpass -p mehant ssh -tt -o StrictHostKeyChecking=no
         mehant@192.168.100.178 <<EOF\nls;\nworking_dir=\"`pwd`\"\n\n#Get namesapce
         variable\n#tenant=`awk '{print $NF}' \"$working_dir/tenant_export\"`\ntenent=\"jmeter\"\necho
-        \"PWD\"\necho \"`pwd`\"\n\njmx=\"/jmeter/apache-jmeter-5.0/bin/Orion-new.jmx\"\n#if
-        [ -n \"$jmx\" ] \n#\tread -p 'Enter path to the jmx file ' \n#fi\n\nif [ !
-        -f \"$jmx\" ];\nthen\n    echo \"Test script file was not found in PATH\"\n
-        \   echo \"Kindly check and input the correct file path\"\n   exit\nfi\n\ntest_name=\"$(basename
-        \"$jmx\")\"\n\n#Get Master pod details\n\nmaster_pod=`kubectl --kubeconfig=config-176
-        get po -n $tenant | grep jmeter-master | awk '{print $1}'`\n\nkubectl --kubeconfig=config-176
+        \"PWD\"\necho \"`pwd`\"\n\njmx=\"/home/mehant/Orion-new.jmx\"\n#if [ -n \"$jmx\"
+        ] \n#\tread -p 'Enter path to the jmx file ' \n#fi\n\nif [ ! -f \"$jmx\" ];\nthen\n
+        \   echo \"Test script file was not found in PATH\"\n    echo \"Kindly check
+        and input the correct file path\"\n   exit\nfi\n\ntest_name=\"$(basename \"$jmx\")\"\n\n#Get
+        Master pod details\n\nmaster_pod=`kubectl --kubeconfig=config-176 get po -n
+        $tenant | grep jmeter-master | awk '{print $1}'`\n\nkubectl --kubeconfig=config-176
         cp \"$jmx\" -n $tenant \"$master_pod:/$test_name\"\n\n## Echo Starting Jmeter
         load test\n\nkubectl --kubeconfig=config-176 exec -ti -n $tenant $master_pod
         -- /bin/bash / \"$test_name\"\n\n"
