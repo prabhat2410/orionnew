@@ -84,11 +84,11 @@ stages:
 
         # Get Master pod details
 
-        #printf "Copy %s to master\n" "${jmx_dir}.jmx"
+        printf "Copy %s to master\n" "${jmx_dir}.jmx"
 
         master_pod=`kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | awk '{print \$1}'`
 
-        kubectl cp "${jmx_dir}/${jmx_dir}.jmx" -n "$tenant" "$master_pod":/
+        kubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx
     when:
       branch: {}
       event: {}
