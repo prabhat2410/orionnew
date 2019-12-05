@@ -73,9 +73,9 @@ stages:
         tenent="jmeter"
         tenant=$(awk '{print $NF}' "$working_dir"/tenant_export)
         #jmx="/jmeter/apache-jmeter-5.0/bin/Orion-new.jmx"
-        jmx_dir="/home/mehant/Orion-new.jmx"
+        #jmx_dir="/home/mehant/Orion-new.jmx"
 
-        if [ ! -d "$jmx_dir" ];
+        if [ ! -f "/home/mehant/Orion-new.jmx" ];
         then
             echo "Test script dir was not found"
             echo "Kindly check and input the correct file path"
