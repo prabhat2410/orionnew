@@ -84,7 +84,7 @@ stages:
 
         # Get Master pod details
 
-        printf "Copy %s to master\n" "${jmx_dir}.jmx"
+        #printf "Copy %s to master\n" "${jmx_dir}.jmx"
 
         master_pod=`kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | awk '{print \$1}'`
 
