@@ -4,6 +4,7 @@ metadata:
   name: api-tests
   namespace: updateandrollback
 spec:
+  parallelism: 1
   template:
     metadata:
       name: api-tests
