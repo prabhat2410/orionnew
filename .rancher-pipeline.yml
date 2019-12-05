@@ -75,9 +75,8 @@ stages:
         \  exit\nfi\n\n#test_name=\"$(basename \"$jmx\")\"\n\n#Get Master pod details\n\n#master_pod=`kubectl
         --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | awk '{print
         \\$1}'`\n\nkubectl --kubeconfig=config-176 cp \"home/mehant/Orion-new.jmx\"
-        -n jmeter \"jmeter-master-7774f59cb4-9xqfk:/Orion-new.jmx\"\n\n## Echo Starting
-        Jmeter load test\n\nkubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk
-        -- /bin/bash  \"Orion-new.jmx\"\n\n"
+        -n jmeter \"jmeter-master-7774f59cb4-9xqfk:/Orion-new.jmx\"\n\nkubectl --kubeconfig=config-176
+        exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk -- /bin/bash  \"Orion-new.jmx\"\n"
     when:
       branch: {}
       event: {}
