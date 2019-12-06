@@ -24,13 +24,8 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: demo_test
   steps:
   - runScriptConfig:
@@ -94,7 +89,12 @@ stages:
 
         kubectl --kubeconfig=config-176 exec -ti -n jmeter $(master_pod) -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t $(jmx)
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
