@@ -49,6 +49,10 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |-
+        var=5
+        var1=$(var)
+        echo "---- $(var1)"
+
         apt-get update
         apt-get install sshpass
 
