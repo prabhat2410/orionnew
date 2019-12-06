@@ -64,22 +64,10 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |+
-        #! /usr/bin/env python
-        import os,subprocess
-        _rc0 = subprocess.call(["gpt-get","update"],shell=True)
-        _rc0 = subprocess.call(["apt-get","install","sshpass"],shell=True)
-        _rc0 = subprocess.Popen("sshpass" + " " + "-p" + " " + "mehant" + " " + "ssh" + " " + "-tt" + " " + "-o" + " " + "StrictHostKeyChecking=no" + " " + "mehant@192.168.100.178",shell=True,stdin=subprocess.PIPE)
-        _rc0.communicate("\nsleep 30\n\nmaster_pod="+os.popen("kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | cut -d " " -f 1").read().rstrip("\n")+"\necho "+str(master_pod.val)+"\n\nkubectl --kubeconfig=config-176 exec -ti -n jmeter "+str(master_pod.val)+" -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n\n")
-        _rc0 = _rc0.wait()print '''
-
-        sleep 30
-
-        master_pod=`kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | cut -d " " -f 1`
-        echo $master_pod
-
-        kubectl --kubeconfig=config-176 exec -ti -n jmeter $master_pod -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx
-
-        '''
+        x = 1
+        if x == 1:
+            # indented four spaces
+            print("x is 1.")
 
     when:
       branch: {}
