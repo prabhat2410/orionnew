@@ -67,8 +67,8 @@ stages:
         created to launch Jmeter tests directly from the current terminal without
         accessing the jmeter master pod.\n#It requires that you supply the path to
         the jmx file\n#After execution, test script jmx file may be deleted from the
-        pod itself but not locally.\n\n\nsshpass -p mehant ssh -tt -o StrictHostKeyChecking=no
-        mehant@192.168.100.178 <<EOF\n\n\necho \"aa\" >> file1\necho \"bb\" >> file2\necho
+        pod itself but not locally.\n\nsshpass -p mehant ssh -tt -o StrictHostKeyChecking=no
+        mehant@192.168.100.178 <<EOF\n\n#echo \"aa\" >> file1\n#echo \"bb\" >> file2\n#echo
         \"cc\" >> file3\n\nworking_dir=\"`pwd`\"\n\n#Get namesapce variable\n#tenant=`awk
         '{print $NF}' \"$working_dir/tenant_export\"`\ntenent=\"jmeter\"\n#echo \"***
         PWD ***\"\n#echo \"`pwd`\"\n\n#jmx=\"/home/mehant/Orion-new.jmx\"\n#if [ -n
