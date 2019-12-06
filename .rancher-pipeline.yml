@@ -34,9 +34,9 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\nsshpass -p
-        mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 \" api_test_pod=$(kubectl
+        mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 \" api_test_pod=\"`kubectl
         --kubeconfig=config-176 get pods -n updateandrollback | grep \"api-test\"
-        | cut -d \" \" -f1 |head -1); kubectl --kubeconfig=config-176 logs $api_test_pod
+        | cut -d \" \" -f1 |head -1`\"; kubectl --kubeconfig=config-176 logs $api_test_pod
         -n updateandrollback > /home/mehant/Test_Reports/postman_report__$(date \"+%Y.%m.%d-%H.%M.%S\")\"\n\n\n\n#api_test_pod=$(kubectl
         --kubeconfig=config-176 get pods -n updateandrollback | grep \"api-test\"
         | cut -d \" \" -f1 |head -1)\n\n#date=$(date_\"+%Y.%m.%d-%H.%M.%S\")\n\n#echo
