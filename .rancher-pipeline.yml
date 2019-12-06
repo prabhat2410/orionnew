@@ -24,16 +24,26 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: demo_test
   steps:
   - runScriptConfig:
       image: python:latest
       shellScript: echo "hello world"
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: jmeter
   steps:
   - runScriptConfig:
