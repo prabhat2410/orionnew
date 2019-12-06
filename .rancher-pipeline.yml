@@ -50,6 +50,7 @@ stages:
       image: python:latest
       shellScript: |-
         var=5
+        echo "___ $var "
         var1=${var}
         echo "---- ${var1}"
 
