@@ -63,7 +63,7 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |
+      shellScript: |-
         #! /usr/bin/env python
         import os,subprocess
         _rc0 = subprocess.call(["apt-get","update"],shell=True)
@@ -81,7 +81,6 @@ stages:
         #echo $master_pod^M
         kubectl --kubeconfig=config-176 exec -ti -n jmeter ${master_pod} -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx^M
         #echo $master_pod ^M
-        '''
     when:
       branch: {}
       event: {}
