@@ -51,8 +51,14 @@ stages:
 
         sleep 60
 
-        api_test_pod=$(kubectl --kubeconfig=config-176 get pods -n updateandrollback |grep "api-test" |awk '{print $1}' |head -1)
+        api_test_pod=$(kubectl --kubeconfig=config-176 get pods -n updateandrollback | grep "api-test" | cut -d " " -f1 |head -1)
+
+        date=$(date_"+%Y.%m.%d-%H.%M.%S")
+
+        echo "$date"
+
         echo "$api_test_pod"
+
         kubectl --kubeconfig=config-176 logs $api_test_pod -n updateandrollback > /home/mehant/Test_Reports/postman_report__$(date "+%Y.%m.%d-%H.%M.%S")
 
 - name: demo_test
