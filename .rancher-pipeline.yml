@@ -60,8 +60,8 @@ stages:
         [ ! -f \"/home/mehant/Orion-new.jmx\" ];\n#then\n#    echo \"Test script file
         was not found in PATH\"\n#    echo \"Kindly check and input the correct file
         path\"\n#   exit\n#fi\n\n#test_name=\"$(basename \"$jmx\")\"\n\n#Get Master
-        pod details\n\nmaster_pod=\"`kubectl --kubeconfig=config-176 get po -n jmeter
-        | grep jmeter-master | awk '{print $1}'`\"\n\nkubectl --kubeconfig=config-176
+        pod details\n\n\nmaster_pod=\"$(kubectl --kubeconfig=config-176 get po -n
+        jmeter | grep jmeter-master | awk '{print $1}')\"\n\nkubectl --kubeconfig=config-176
         exec -ti -n jmeter $master_pod -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter
         -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n\n"
     when:
