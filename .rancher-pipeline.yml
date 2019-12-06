@@ -32,13 +32,8 @@ stages:
       image: python:latest
       shellScript: echo "hello world"
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: jmeter
   steps:
   - runScriptConfig:
@@ -85,12 +80,7 @@ stages:
 
         kubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 timeout: 60
 notification: {}
