@@ -24,8 +24,13 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: demo_test
   steps:
   - runScriptConfig:
@@ -45,8 +50,8 @@ stages:
       image: python:latest
       shellScript: |-
         var=5
-        var1=$(var)
-        echo "---- $(var1)"
+        var1=${var}
+        echo "---- ${var1}"
 
         apt-get update
         apt-get install sshpass
@@ -89,12 +94,7 @@ stages:
 
         kubectl --kubeconfig=config-176 exec -ti -n jmeter $(master_pod) -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t $(jmx)
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 timeout: 60
 notification: {}
