@@ -35,7 +35,7 @@ stages:
       image: python:latest
       shellScript: |+
         apt-get update
-        apt-get install sshpass
+        apt-get install sshpass << EOF
 
 
 
