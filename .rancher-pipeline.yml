@@ -34,9 +34,9 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\n\n\n\n\nsshpass
-        -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 << EOF\n\npod_name=kubectl
+        -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 << EOF\n\npod_name=`kubectl
         --kubeconfig=config-176 get pods -n updateandrollback |grep \"api-test\" |cut
-        -d \" \" -f1|head -n1\n\necho \"Pod anme = \\$pod_name\"\n\n\nEOF\n\n\n"
+        -d \" \" -f1|head -n1`\n\necho \"Pod anme = ${pod_name}\"\n\n\nEOF\n\n\n"
     when:
       branch: {}
       event: {}
