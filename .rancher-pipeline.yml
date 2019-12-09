@@ -63,12 +63,14 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |+
-        x = 1
-        if x == 1:
-            # indented four spaces
-            print("x is 1.")
-
+      shellScript: "apt-get update\napt-get install sshpass\n\nsshpass -p mehant ssh
+        -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 << EOF\n\n#sleep 30\n\n#echo
+        $master_pod\nkubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master
+        | cut -d \" \" -f 1\nmaster_pod=`kubectl --kubeconfig=config-176 get po -n
+        jmeter | grep jmeter-master | cut -d \" \" -f 1`\n#echo $master_pod\nkubectl
+        --kubeconfig=config-176 exec -ti -n jmeter ${master_pod} -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter
+        -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n#echo $master_pod
+        \nEOF\n"
     when:
       branch: {}
       event: {}
