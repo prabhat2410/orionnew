@@ -63,26 +63,11 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |
-        #! /usr/local/bin/python
-        import subprocess, os
-        import time
-        #rc1 = subprocess.Popen('sudo yum update', shell=True)
-        #rc2 = subprocess.Popen('sudo yum install sshpass', shell=True)
+      shellScript: |2+
 
-        rc3 = subprocess.Popen('sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178', shell=True, stdout=subprocess.PIPE, stderr=open(os.devnull, 'w'))
-        print "192.168.100.178"
-        #time.sleep(30)
 
-        master_pod = os.popen('kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | cut -d " " -f 1 | head -n 1').read().rstrip("\n")
-        print master_pod
+        kubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-kwx6j -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx
 
-        cmd = "kubectl --kubeconfig=config-176 exec -ti -n jmeter " + master_pod + " -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx"
-        print cmd
-
-        os.system(cmd)
-
-        print "done"
     when:
       branch: {}
       event: {}
