@@ -24,8 +24,13 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\n\n\n\n\nsshpass
@@ -58,21 +63,28 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "apt-get update\napt-get install sshpass\n\nsshpass -p mehant ssh
-        -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 << EOF\n\n#sleep 30\n\n#echo
-        $master_pod\nkubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master
-        | cut -d \" \" -f 1\nmaster_pod=`kubectl --kubeconfig=config-176 get po -n
-        jmeter | grep jmeter-master | cut -d \" \" -f 1`\n#echo $master_pod\nkubectl
-        --kubeconfig=config-176 exec -ti -n jmeter ${master_pod} -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter
-        -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n#echo $master_pod
-        \nEOF\n"
+      shellScript: |
+        #! /usr/bin/env python
+        import subprocess, os
+        import time
+        #rc1 = subprocess.Popen('sudo yum update', shell=True)
+        #rc2 = subprocess.Popen('sudo yum install sshpass', shell=True)
+
+        rc3 = subprocess.Popen('sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178', shell=True, stdout=subprocess.PIPE, stderr=open(os.devnull, 'w'))
+        print "192.168.100.178"
+        #time.sleep(30)
+
+        master_pod = os.popen('kubectl --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | cut -d " " -f 1 | head -n 1').read().rstrip("\n")
+        print master_pod
+
+        cmd = "kubectl --kubeconfig=config-176 exec -ti -n jmeter " + master_pod + " -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx"
+        print cmd
+
+        os.system(cmd)
+
+        print "done"
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 timeout: 60
 notification: {}
