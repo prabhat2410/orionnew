@@ -60,7 +60,12 @@ stages:
             print("x is 1.")
 
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
