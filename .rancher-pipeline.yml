@@ -63,14 +63,14 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |+
+      shellScript: |
         apt-get update
         apt-get install sshpass
 
         sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178 <<EOF
 
-        kubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-kwx6j -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx
-
+        kubectl --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-kwx6j -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion_new.jmx
+        EOF
     when:
       branch: {}
       event: {}
