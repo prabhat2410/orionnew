@@ -33,9 +33,16 @@ stages:
         \"Dir = ${dir}\"\n\npod_name=`kubectl --kubeconfig=config-176 get pods -n
         updateandrollback |grep \"api-test\" |cut -d \" \" -f1|head -n1`\n\necho \"Pod
         anme = ${pod_name}\"\n\n\nEOF\n\n\n"
+    envFrom:
+    - {}
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: demo_test
   steps:
   - runScriptConfig:
