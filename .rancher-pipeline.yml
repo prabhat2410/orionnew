@@ -64,10 +64,7 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |
-        which python
-
-
-        #! /usr/bin/env python
+        #! /usr/local/bin/ python
         import subprocess, os
         import time
         #rc1 = subprocess.Popen('sudo yum update', shell=True)
