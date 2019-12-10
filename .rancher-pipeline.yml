@@ -18,6 +18,12 @@ stages:
         - pull_request
         - push
         - tag
+  when:
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: Test_postman
   steps:
   - applyYamlConfig:
@@ -45,6 +51,12 @@ stages:
         include:
         - pull_request
         - push
+  when:
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: demo_test
   steps:
   - runScriptConfig:
@@ -58,6 +70,12 @@ stages:
         include:
         - pull_request
         - push
+  when:
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: jmeter
   steps:
   - runScriptConfig:
@@ -81,6 +99,12 @@ stages:
         - pull_request
         - push
         - tag
+  when:
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: testing pipeline fail
   steps:
   - runScriptConfig:
