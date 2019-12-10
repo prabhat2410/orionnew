@@ -64,6 +64,8 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: |
+        ls /usr/local/bin |grep env
+
         #!/usr/local/bin/env python
         import subprocess, os
         import time
