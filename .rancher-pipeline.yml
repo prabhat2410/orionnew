@@ -13,7 +13,11 @@ stages:
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
       branch: {}
-      event: {}
+      event:
+        include:
+        - pull_request
+        - push
+        - tag
 - name: Test_postman
   steps:
   - applyYamlConfig:
@@ -77,5 +81,10 @@ stages:
         - pull_request
         - push
         - tag
+- name: testing pipeline fail
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: exit(1)
 timeout: 60
 notification: {}
