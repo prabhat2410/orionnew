@@ -85,6 +85,6 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: exit(1)
+      shellScript: sys.exit(-1)
 timeout: 60
 notification: {}
