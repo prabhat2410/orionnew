@@ -17,8 +17,8 @@ stages:
         - master
       event:
         include:
+        - pull_request
         - push
-        - tag
   when:
     event:
       include:
