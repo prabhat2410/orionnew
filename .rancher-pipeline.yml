@@ -91,24 +91,22 @@ stages:
         \" -f 1 | head -n 1').read().rstrip(\"\\n\")\n#print master_pod\n\ncmd = kubectl
         --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk
         -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n#print
-        cmd\n\n#os.system(cmd)\n\n#print \"done\"\nexit "
+        cmd\n\n#os.system(cmd)\n\n#print \"done\"\nsys.exit(1) "
     when:
       branch: {}
-      event:
-        include:
-        - pull_request
-        - push
-        - tag
+      event: {}
+  when:
+    event: {}
+- name: testing pipeline fail
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: sys.exit(-1)
   when:
     event:
       include:
       - pull_request
       - push
       - tag
-- name: testing pipeline fail
-  steps:
-  - runScriptConfig:
-      image: python:latest
-      shellScript: sys.exit(-1)
 timeout: 60
 notification: {}
