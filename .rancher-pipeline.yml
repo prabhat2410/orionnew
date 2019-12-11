@@ -75,7 +75,11 @@ stages:
         ssh\nfinally:\n#print(\"closing connection\")\nssh.close()\n#print(\"closed\")\n "
     when:
       branch: {}
-      event: {}
+      event:
+        include:
+        - pull_request
+        - push
+        - tag
   when:
     event: {}
 - name: testing pipeline fail
