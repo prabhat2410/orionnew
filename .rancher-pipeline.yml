@@ -80,18 +80,10 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "ls /usr/local/bin |grep env\n\n#!/usr/local/bin/env python\nimport
-        subprocess, os\nimport time\nrc1 = subprocess.Popen('sudo yum update', shell=True)\nrc2
-        = subprocess.Popen('sudo yum install sshpass', shell=True)\napt-get update\n\napt-get
-        install sshpass\n\nsshpass -p mehant ssh -tt -o StrictHostKeyChecking=no mehant@192.168.100.178
-        <<EOF\n\nrc3 = subprocess.Popen('sshpass -p mehant ssh -tt -o StrictHostKeyChecking=no
-        mehant@192.168.100.178', shell=True, stdout=subprocess.PIPE, stderr=open(os.devnull,
-        'w'))\nprint \"192.168.100.178\"\ntime.sleep(30)\n\nmaster_pod = os.popen('kubectl
-        --kubeconfig=config-176 get po -n jmeter | grep jmeter-master | cut -d \"
-        \" -f 1 | head -n 1').read().rstrip(\"\\n\")\nprint master_pod\n\ncmd = kubectl
-        --kubeconfig=config-176 exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk
-        -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\nprint
-        cmd\n\nos.system(cmd)\n\nprint \"done\"\nsys.exit(1) "
+      shellScript: "#!/usr/bin/env python\nimport paramiko\nfrom contextlib import
+        contextmanager\nssh = paramiko.SSHClient()\nssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\ntry:\nprint(\"creating
+        connection\")\nssh.connect(hostname='172.30.76.33',username='shubham',password='shubham@123')\nprint(\"connected\")\n#yield
+        ssh\nfinally:\nprint(\"closing connection\")\nssh.close()\nprint(\"closed\")\n "
     when:
       branch: {}
       event: {}
