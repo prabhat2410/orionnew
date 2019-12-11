@@ -98,15 +98,12 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: exit 1
+      shellScript: |-
+        echo "Hi"
+        exit 1
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   when:
     event:
       include:
