@@ -105,11 +105,7 @@ stages:
       branch: {}
       event: {}
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: test2
   steps:
   - runScriptConfig:
