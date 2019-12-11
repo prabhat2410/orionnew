@@ -20,11 +20,7 @@ stages:
         - pull_request
         - push
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: Test_postman
   steps:
   - applyYamlConfig:
@@ -53,11 +49,7 @@ stages:
         - pull_request
         - push
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: demo_test
   steps:
   - runScriptConfig:
@@ -72,11 +64,7 @@ stages:
         - pull_request
         - push
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: jmeter
   steps:
   - runScriptConfig:
@@ -89,11 +77,7 @@ stages:
       branch: {}
       event: {}
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: testing pipeline fail
   steps:
   - runScriptConfig:
@@ -102,8 +86,13 @@ stages:
         echo "Hi"
         exit 1
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   when:
     event: {}
 - name: test2
@@ -111,5 +100,13 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: echo "Hi"
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 timeout: 60
 notification: {}
