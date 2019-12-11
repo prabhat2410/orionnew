@@ -89,7 +89,11 @@ stages:
       branch: {}
       event: {}
   when:
-    event: {}
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: testing pipeline fail
   steps:
   - runScriptConfig:
