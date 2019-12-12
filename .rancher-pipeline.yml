@@ -69,8 +69,9 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "#!/usr/local/bin/env python\n\npython --version\n\n\nimport paramiko\nfrom
-        contextlib import contextmanager\nssh = paramiko.SSHClient()\nssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\ntry:\n#print(\"creating
+      shellScript: "#!/usr/local/bin/env python\n\npython --version\n\nls /usr/local/bin
+        | grep python\n\n\n\nimport paramiko\nfrom contextlib import contextmanager\nssh
+        = paramiko.SSHClient()\nssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\ntry:\n#print(\"creating
         connection\")\nssh.connect(hostname='172.30.76.33',username='shubham',password='shubham@123')\n#print(\"connected\")\n#yield
         ssh\nfinally:\n#print(\"closing connection\")\nssh.close()\n#print(\"closed\")\n "
     when:
