@@ -69,11 +69,22 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "#!/usr/local/bin/env python\n\npython --version\n\nls /usr/local/bin
-        | grep python\n\n\n\nimport paramiko\nfrom contextlib import contextmanager\nssh
-        = paramiko.SSHClient()\nssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\ntry:\n#print(\"creating
-        connection\")\nssh.connect(hostname='172.30.76.33',username='shubham',password='shubham@123')\n#print(\"connected\")\n#yield
-        ssh\nfinally:\n#print(\"closing connection\")\nssh.close()\n#print(\"closed\")\n "
+      shellScript: "apt-get update\n#sleep 60\n\napt-get install sshpass\n#sleep 60\n\n\n#Script
+        created to launch Jmeter tests directly from the current terminal without
+        accessing the jmeter master pod.\n#It requires that you supply the path to
+        the jmx file\n#After execution, test script jmx file may be deleted from the
+        pod itself but not locally.\n\nsshpass -p mehant ssh -tt -o StrictHostKeyChecking=no
+        mehant@192.168.100.178 <<EOF\n\n#ls;\n#working_dir=\"`pwd`\"\n\n#Get namesapce
+        variable\n#tenant=`awk '{print $NF}' \"$working_dir/tenant_export\"`\n#tenent=\"jmeter\"\n#echo
+        \"*** PWD ***\"\n#echo \"`pwd`\"\n\n#jmx=\"/home/mehant/Orion-new.jmx\"\n#if
+        [ -n \"$jmx\" ] \n#             read -p 'Enter path to the jmx file ' \n#fi\n\n#if
+        [ ! -f \"/home/mehant/Orion-new.jmx\" ];\n#then\n#    echo \"Test script file
+        was not found in PATH\"\n#    echo \"Kindly check and input the correct file
+        path\"\n#   exit\n#fi\n\n#test_name=\"$(basename \"$jmx\")\"\n\n#Get Master
+        pod details\n\n#master_pod=`kubectl --kubeconfig=config-176 get po -n jmeter
+        | grep jmeter-master | awk '{print \\$1}'`\n\nkubectl --kubeconfig=config-176
+        exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter
+        -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n "
     when:
       branch: {}
       event: {}
