@@ -4,6 +4,8 @@ metadata:
   name: api-tests
   namespace: updateandrollback
 spec:
+  completions: 1
+  parallelism: 1
   template:
     metadata:
       name: api-tests
@@ -11,6 +13,11 @@ spec:
       containers:
       - name: api-tests
         image: postman/newman:alpine
-        command: ["/bin/sh"]
-        args: ["-c", "newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 --bail --reporters cli --reporter-cli-no-failures; test_status=$?; echo \"test status = $test_status\"; if [ $test_status != 0 ]; then exit 1; else echo \"TC Pass\"; fi;"]
-      restartPolicy: Never
+		command:
+    - /bin/sh
+    - -c
+    - |
+      newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json  
+      status=$?
+      if [ $status -ne 0 ]; then exit 1; fi         
+    restartPolicy: Never
