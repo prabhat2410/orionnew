@@ -1,6 +1,5 @@
 FROM centos:centos7.6.1810
 
-MAINTAINER FIWARE Orion Context Broker Team. Telefónica I+D
 
 ENV ORION_USER orion
 ENV GIT_REV_ORION 2.2.0
