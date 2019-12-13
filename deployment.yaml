@@ -24,20 +24,3 @@ spec:
         ports:
         - containerPort: 1026
         args: ["-dbhost", "mongo-0.mongo.ceph.svc.cluster.local:27017,mongo-1.mongo.ceph.svc.cluster.local:27017,mongo-2.mongo.ceph.svc.cluster.local:27017", "-rplSet" ,"rs0", "-logLevel", "DEBUG"]
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: orion-service
-  namespace: ceph
-  labels:
-    name: orionservice-nodeport-svc
-spec:
-  type: NodePort
-  ports:
-    - port: 1026
-      nodePort: 31444
-      name: http
-  selector:
-    name: broker
