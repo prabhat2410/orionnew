@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "f68bd23c-93ab-4da2-aebb-ab3135dacc0d",
+		"name": "CSP_Collection",
+		"description": "A collection for CSP orchestration component functional testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IOT",
+			"item": [
+				{
+					"name": "IOT get request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f63b4cf5-397c-472a-9ee7-a6f67f3e162c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "fiware-service",
+								"value": "fiwareldb",
+								"type": "text"
+							},
+							{
+								"key": "fiware-servicepath",
+								"value": "/registration_raw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"devices\": [{\n                \"device_id\": \"fixeddevice\",\n                \"entity_name\": \" FldbEntity1\",\n                \"entity_type\": \" FldbEntity \",\n                \"protocol\":\"IoTA-JSON\",\n                 \"lazy\": [],\n            \"commands\": [],\n            \"static_attributes\": [],\n                \"attributes\": [{\n                        \"object_id\": \"diviceName\",\n                        \"name\": \"diviceName\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\": \"locationType\",\n                        \"name\": \"locationType\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\": \"locationTypeId\",\n                        \"name\": \"locationTypeId\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\":\"locationName\",\n                        \"name\": \"locationName\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\": \"locationId\",\n                        \"name\": \"locationId\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\": \"deviceType\",\n                        \"name\": \"deviceType\",\n                        \"type\": \"string\"\n                },{\n                        \"object_id\": \"deviceMacId\",\n                        \"name\": \"deviceMacId\",\n                        \"type\": \"string\"\n                }\n                ]}]\n}"
+						},
+						"url": {
+							"raw": "http://192.168.100.151:30190/iot/device",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"100",
+								"151"
+							],
+							"port": "30190",
+							"path": [
+								"iot",
+								"device"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Functional testcases for IOT Agent",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
