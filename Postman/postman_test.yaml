@@ -6,6 +6,7 @@ metadata:
 spec:
   completions: 1
   parallelism: 1
+  backoffLimit: 1
   template:
     metadata:
       name: api-tests
@@ -17,7 +18,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json  
+           newman run https://www.getpostman.com/collections/a861781dc9b36edf6715 | grep "AssertionError"  
           status=$?
-          if [ $status -ne 0 ]; then exit 1; fi         
+          if [ $status -eq 0 ]; then exit 1; fi         
     restartPolicy: Never
