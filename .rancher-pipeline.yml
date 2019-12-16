@@ -19,6 +19,12 @@ stages:
         include:
         - pull_request
         - push
+  - publishImageConfig:
+      dockerfilePath: docker/Dockerfile
+      buildContext: .
+      tag: orion-devoperation
+      pushRemote: true
+      registry: 192.168.100.176:5000
   when:
     event: {}
 - name: Test_postman
@@ -86,8 +92,13 @@ stages:
         exec -ti -n jmeter jmeter-master-7774f59cb4-9xqfk -- /bin/bash  /jmeter/apache-jmeter-5.0/bin/jmeter
         -n -t /jmeter/apache-jmeter-5.0/bin/Orion-new_test.jmx\n "
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - push
+        - pull_request
   when:
     event: {}
 - name: testing pipeline fail
