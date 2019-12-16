@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: broker
-  namespace: ceph
 spec:
   replicas: 3
   template:
@@ -13,7 +12,7 @@ spec:
       containers:
       
       - name: orion
-        image: 10.0.8.61:31484/fiware-orion
+        image: 192.168.100.176:5000/orion-devoperation
         resources:
          limits:
           memory: "500Mi"
