@@ -30,15 +30,6 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch: {}
-      event: {}
-  when:
-    event: {}
-- name: Test_postman
-  steps:
-  - applyYamlConfig:
-      path: Postman/Postman.yaml
-    when:
       branch:
         include:
         - master
@@ -46,6 +37,15 @@ stages:
         include:
         - pull_request
         - push
+  when:
+    event: {}
+- name: Test_postman
+  steps:
+  - applyYamlConfig:
+      path: Postman/Postman.yaml
+    when:
+      branch: {}
+      event: {}
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\n\n\n\n\nsshpass
