@@ -29,7 +29,7 @@ RUN \
       which \
       cyrus-sasl-devel && \
     # Install libmicrohttpd from source
-    curl -kOL https://github.com/prabhat2410/Orion/blob/master/test/libmicrohttpd-0.9.48.tar.gz && \
+    wget https://github.com/prabhat2410/Orion/raw/master/test/libmicrohttpd-0.9.48.tar.gz && \
     tar xvf libmicrohttpd-0.9.48.tar.gz && \
     cd libmicrohttpd-0.9.48 && \
     ./configure --disable-messages --disable-postprocessor --disable-dauth && \
@@ -37,13 +37,13 @@ RUN \
     make install && \
     ldconfig && \
     # Install mongodb driver from source
-     curl -kOL https://github.com/prabhat2410/Orion/blob/master/test/legacy-1.1.2.tar.gz && \
+    wget https://raw.githubusercontent.com/prabhat2410/Orion/master/test/legacy-1.1.2.tar.gz && \
     tar xfz legacy-1.1.2.tar.gz && \
     cd mongo-cxx-driver-legacy-1.1.2 && \
     scons --use-sasl-client --ssl && \
     scons install --prefix=/usr/local --use-sasl-client --ssl && \
     # Install rapidjson from source
-    curl -kOL https://github.com/prabhat2410/Orion/blob/master/test/v1.0.2.tar.gz && \
+    wget https://github.com/prabhat2410/Orion/raw/master/test/v1.0.2.tar.gz && \
     tar xfz v1.0.2.tar.gz && \
     mv rapidjson-1.0.2/include/rapidjson/ /usr/local/include && \
     # Install orion from source
