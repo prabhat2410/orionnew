@@ -5,11 +5,7 @@ metadata:
   namespace: p-jnm8q-pipeline
 spec:
   containers:
-  - name: api-test-demo
+  - name: api-test-ctr
     image: postman/newman:alpine
-    command:
-        - /bin/sh
-        - -c
-        - |
-          newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json; status=$?; if [ $status -ne 0 ]; then exit 1; fi       
-      restartPolicy: Never
+    command: ["bash","-c","newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json; status=$?; if \[ $status -ne 0 \]; then exit 1; fi"]     
+    restartPolicy: Never
