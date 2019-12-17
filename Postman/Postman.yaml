@@ -1,18 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: api-tests
+  name: api-test-demo
+  namespace: p-jnm8q-pipeline
 spec:
-  template:
-    metadata:
-      name: api-tests
-    spec:
-      containers:
-      - name: api-tests
-        image: postman/newman:alpine
-        command:
+  containers:
+  - name: api-test-demo
+    image: postman/newman:alpine
+    command:
         - /bin/sh
         - -c
         - |
-          newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json; status=$?; if [ $status -ne 0 ]; then exit 1; fi         
+          newman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json; status=$?; if [ $status -ne 0 ]; then exit 1; fi       
       restartPolicy: Never
