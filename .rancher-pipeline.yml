@@ -36,13 +36,8 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\n\n\n\n\nsshpass
@@ -66,13 +61,8 @@ stages:
       image: python:latest
       shellScript: echo "hello world"
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   when:
     event: {}
 - name: jmeter
