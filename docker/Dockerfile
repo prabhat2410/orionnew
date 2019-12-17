@@ -37,7 +37,7 @@ RUN \
     make install && \
     ldconfig && \
     # Install mongodb driver from source
-     curl -kOL https://github.com/prabhat2410/Orion/blob/master/test/mongo-cxx-driver-legacy-1.1.2.tar.gz && \
+     curl -kOL https://github.com/prabhat2410/Orion/blob/master/test/legacy-1.1.2.tar.gz && \
     tar xfz legacy-1.1.2.tar.gz && \
     cd mongo-cxx-driver-legacy-1.1.2 && \
     scons --use-sasl-client --ssl && \
