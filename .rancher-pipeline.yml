@@ -71,6 +71,10 @@ stages:
         # Stop on first error
         #set -e;
 
+        apt install docker.io
+        systemctl start docker
+        systemctl enable docker
+
         docker run -t postman/newman:alpine run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json
 
         status=$?
