@@ -72,7 +72,6 @@ stages:
         #set -e;
         apt-get update
         apt-get install curl
-        apt-get install lsb
 
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
