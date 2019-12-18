@@ -43,6 +43,14 @@ stages:
         #!/bin/bash
 
         echo "hello world richa" | awk '{print $3}'
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   when:
     event: {}
 - name: Test_postman
