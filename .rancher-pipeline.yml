@@ -67,7 +67,7 @@ stages:
         - push
   - runScriptConfig:
       image: python:latest
-      shellScript: "# Stop on first error\n#set -e;\napt-get update\necho \"y\" |
+      shellScript: "# Stop on first error\n#set -e;\napt-get update\necho \"Y\" |
         apt-get install \"software-properties-common\"\napt-get install curl\t\n\napt-get
         update\n\ncurl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key
         add -\n\nadd-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu
