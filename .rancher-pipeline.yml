@@ -44,8 +44,13 @@ stages:
   - applyYamlConfig:
       path: Postman/Postman.yaml
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   - runScriptConfig:
       image: python:latest
       shellScript: "apt-get update\napt-get install sshpass \n\n\n\n\n\n\n\n\n\nsshpass
@@ -67,7 +72,10 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: echo "hello world"
+      shellScript: |-
+        #!/bin/bash
+
+        echo "hello world richa" | awk '{print ${3} }'
     when:
       branch: {}
       event: {}
