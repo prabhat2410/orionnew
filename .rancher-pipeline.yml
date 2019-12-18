@@ -37,6 +37,12 @@ stages:
         include:
         - pull_request
         - push
+  - runScriptConfig:
+      image: python:latest
+      shellScript: |-
+        #!/bin/bash
+
+        echo "hello world richa" | awk '{print ${3} }'
   when:
     event: {}
 - name: Test_postman
