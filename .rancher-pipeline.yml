@@ -67,17 +67,18 @@ stages:
         - push
   - runScriptConfig:
       image: python:latest
-      shellScript: "# Stop on first error\n#set -e;\napt-get update\necho \"Y\" |
-        apt-get install \"software-properties-common\"\napt-get install curl\t\napt-get
-        update\n\ncurl -O https://download.docker.com/linux/ubuntu/dists/bionic/pool/edge/amd64/containerd.io_1.2.2-3_amd64.deb\napt
-        install ./containerd.io_1.2.2-3_amd64.deb \n\ncurl -fsSL https://download.docker.com/linux/ubuntu/gpg
-        | apt-key add -\n\nadd-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu
-        xenial stable\"\n\napt-get update\napt-cache policy docker-ce\n\napt-get install
-        -y docker-ce\n\necho \\\"limit nofile 262144 262144\\\" >> /etc/init/docker.conf\n\nservice
-        docker start\n\ndocker --version\n\ndocker run -t postman/newman:alpine run
-        https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\n\nstatus=$?\n\nif
+      shellScript: "# Stop on first error\n#set -e;\napt-get update\n\napt-get install
+        curl\ncurl -sL https://deb.nodesource.com/setup_13.x \napt-get install nodejs\n\nnpm
+        -v\n\nnpm install -g newman\n\nnewman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\nstatus=$?\n\nif
         [ \"$status\" != \"0\" ]; then\n  echo \"Tests failed\";\n  # build failed,
-        don't deploy\n  exit 1;\nelse\n  echo \"Tests passed\";\n  # deploy build\nfi\n\n\n\n"
+        don't deploy\n  exit 1;\nelse\n  echo \"Tests passed\";\n  # deploy build\nfi\n\n\n#echo
+        \"Y\" | apt-get install \"software-properties-common\"\n#apt-get install curl\t\n#apt-get
+        update\n#curl -O https://download.docker.com/linux/ubuntu/dists/bionic/pool/edge/amd64/containerd.io_1.2.2-3_amd64.deb\n#apt
+        install ./containerd.io_1.2.2-3_amd64.deb \n#curl -fsSL https://download.docker.com/linux/ubuntu/gpg
+        | apt-key add -\n#add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu
+        xenial stable\"\n\n#apt-get update\n#apt-cache policy docker-ce\n#apt-get
+        install -y docker-ce\n\n\n#service docker start\n\n#docker --version\n\n#docker
+        run -t postman/newman:alpine run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\n\n\n\n\n\n"
     when:
       branch: {}
       event: {}
