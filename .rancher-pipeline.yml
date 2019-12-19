@@ -76,10 +76,7 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |-
-        #!/bin/bash
-
-        echo "hello world richa" | awk '{print ${3} }'
+      shellScript: "#!/bin/bash\n\necho \"hello world richa\" "
     when:
       branch: {}
       event: {}
