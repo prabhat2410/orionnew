@@ -20,7 +20,7 @@ stages:
         - pull_request
         - push
   - publishImageConfig:
-      dockerfilePath: docker/Dockerfile
+      dockerfilePath: ./Dockerfile
       buildContext: .
       tag: orion-devoperation
       registry: 127.0.0.1:34685
