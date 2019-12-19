@@ -54,16 +54,6 @@ stages:
     event: {}
 - name: Test_postman
   steps:
-  - applyYamlConfig:
-      path: Postman/Postman.yaml
-    when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
   - runScriptConfig:
       image: python:latest
       shellScript: "# Stop on first error\n#set -e;\napt-get update\n\n#apt-get install
