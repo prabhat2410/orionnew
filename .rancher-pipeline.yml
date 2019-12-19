@@ -69,7 +69,7 @@ stages:
       image: python:latest
       shellScript: "# Stop on first error\n#set -e;\napt-get update\n\napt-get install
         curl\ncurl -sL https://deb.nodesource.com/setup_13.x \necho Y | apt-get install
-        nodejs\n\nnpm -v\n\nnpm install -g newman\n\nnewman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\nstatus=$?\n\nif
+        npm\n\nnpm -v\n\nnpm install -g newman\n\nnewman run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\nstatus=$?\n\nif
         [ \"$status\" != \"0\" ]; then\n  echo \"Tests failed\";\n  # build failed,
         don't deploy\n  exit 1;\nelse\n  echo \"Tests passed\";\n  # deploy build\nfi\n\n\n\n\n\n\n\n\n"
     when:
