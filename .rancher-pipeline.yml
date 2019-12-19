@@ -73,8 +73,8 @@ stages:
         install ./containerd.io_1.2.2-3_amd64.deb \n\ncurl -fsSL https://download.docker.com/linux/ubuntu/gpg
         | apt-key add -\n\nadd-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu
         xenial stable\"\n\napt-get update\napt-cache policy docker-ce\n\napt-get install
-        -y docker-ce\n\nservice docker status\n\ndocker run -t postman/newman:alpine
-        run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\n\nstatus=$?\n\nif
+        -y docker-ce\n\nservice docker start\nservice docker enable\n\ndocker --version\n\ndocker
+        run -t postman/newman:alpine run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\n\nstatus=$?\n\nif
         [ \"$status\" != \"0\" ]; then\n  echo \"Tests failed\";\n  # build failed,
         don't deploy\n  exit 1;\nelse\n  echo \"Tests passed\";\n  # deploy build\nfi\n\n\n\n"
     when:
