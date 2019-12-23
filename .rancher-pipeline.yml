@@ -65,16 +65,6 @@ stages:
       event: {}
   when:
     event: {}
-- name: demo_test
-  steps:
-  - runScriptConfig:
-      image: python:latest
-      shellScript: "#!/bin/bash\n\necho \"hello world richa\" "
-    when:
-      branch: {}
-      event: {}
-  when:
-    event: {}
 - name: deploy
   steps:
   - applyYamlConfig:
