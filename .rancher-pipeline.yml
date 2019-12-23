@@ -56,8 +56,7 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: |2+
-
+      shellScript: |+
         apt-get update
 
         echo Y | apt-get install npm
