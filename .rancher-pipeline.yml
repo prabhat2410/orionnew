@@ -56,10 +56,26 @@ stages:
   steps:
   - runScriptConfig:
       image: python:latest
-      shellScript: "# Stop on first error\n#set -e;\napt-get update\n\n#apt-get install
-        curl\n#curl -sL https://deb.nodesource.com/setup_13.x \necho Y | apt-get install
-        npm\n\nnpm -v\n\nnpm install -g newman\n\nnewman run https://www.getpostman.com/collections/a861781dc9b36edf6715\n#newman
-        run https://raw.githubusercontent.com/prabhat2410/Orion/master/Postman/CSP_Collection.postman_collection.json\n\n\n\n\n\n\n\n\n\n"
+      shellScript: |2+
+
+        apt-get update
+
+        echo Y | apt-get install npm
+
+        npm -v
+
+        npm install -g newman
+
+        newman run https://www.getpostman.com/collections/a861781dc9b36edf6715
+
+
+
+
+
+
+
+
+
     when:
       branch: {}
       event: {}
