@@ -12,13 +12,8 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
@@ -29,43 +24,20 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
-  - runScriptConfig:
-      image: python:latest
-      shellScript: |-
-        #!/bin/bash
-
-        echo "hello world richa" | awk '{print $3}'
-    when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   when:
     event: {}
-- name: Test_postman
+- name: test
   steps:
   - runScriptConfig:
       image: python:latest
       shellScript: |+
         apt-get update
-
         echo Y | apt-get install npm
-
         npm -v
-
         npm install -g newman
-
-        newman run https://www.getpostman.com/collections/a861781dc9b36edf6715
+        newman run http://192.168.100.178/csp_containerizationandautomation/orion/raw/master/Context_State_in_Orion.postman_collection.json
 
 
 
@@ -85,22 +57,12 @@ stages:
   - applyYamlConfig:
       path: ./deployment.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   - applyYamlConfig:
       path: service.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 timeout: 60
 notification: {}
