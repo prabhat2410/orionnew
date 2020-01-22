@@ -12,8 +12,13 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
@@ -24,8 +29,36 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
+  - runScriptConfig:
+      image: python:latest
+      shellScript: |+
+        docker pull ansi/mosquitto
+        docker pull mongo
+        docker pull rabbitmq
+
+        docker run -d -p 1883:1883   -l mosquitto ansi/mosquitto
+        docker run -d -p 27017:27017 -l mongodb mongo
+        docker run -d -p 5672:5672   -l rabbitmq rabbitmq
+
+        apt-get update
+        echo Y | apt-get install npm
+        npm -v
+        npm insatll -g
+        npm install nock
+        npm install should
+        npm install mocha chai --save-dev
+        npm test
+
+
+
+
   when:
     event: {}
 - name: test
