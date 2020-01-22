@@ -36,10 +36,6 @@ stages:
         include:
         - pull_request
         - push
-  - runScriptConfig:
-      image: python:latest
-      shellScript: "apt-get update\napt-get install sshpass\nsshpass -p test ssh -tt
-        -o StrictHostKeyChecking=no test@192.168.100.117 ./unit_test_iot.sh \n\n\n"
   when:
     event: {}
 - name: test
