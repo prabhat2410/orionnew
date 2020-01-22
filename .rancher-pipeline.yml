@@ -40,7 +40,7 @@ stages:
       image: python:latest
       shellScript: |+
         apt-get update
-
+        df -h
         apt-get install docker.io
 
         apt-get install apt-transport-https ca-certificates curl software-properties-common
