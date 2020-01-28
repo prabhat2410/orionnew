@@ -42,7 +42,7 @@ execute_process(COMMAND            echo $USER
                 OUTPUT_VARIABLE    USER)
 
 ##Richa change in Line No.45 (Given full path)
-execute_process(COMMAND            sh /opt/Orion/scripts/build/osDistro.sh
+execute_process(COMMAND            sh ../scripts/build/osDistro.sh
                 OUTPUT_VARIABLE    DISTRO)
 
 # TRACES: To remove LM_T
