@@ -61,7 +61,7 @@ ifndef MOCK_CONFIG
 endif
 
 ifndef MONGO_HOST
-    MONGO_HOST=mongodb
+    MONGO_HOST=172.17.0.2
 endif
 
 all: prepare_release release
