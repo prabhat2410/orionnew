@@ -1,9 +1,9 @@
 FROM centos:centos7.6.1810
 
 
-#ENV ORION_USER orion
-#ENV GIT_REV_ORION 2.2.0
-#ENV CLEAN_DEV_TOOLS 1
+ENV ORION_USER orion
+ENV GIT_REV_ORION 2.2.0
+ENV CLEAN_DEV_TOOLS 1
 
 WORKDIR /opt
 
@@ -81,5 +81,5 @@ RUN \
     chmod +x ./scripts/testEnv.sh && \
     ./scripts/testEnv.sh && \
 
-    make unit_test && \
+    make unit_test 
     #Test
