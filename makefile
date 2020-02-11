@@ -61,7 +61,7 @@ ifndef MOCK_CONFIG
 endif
 
 ifndef MONGO_HOST
-    MONGO_HOST=mongo
+    MONGO_HOST=mongodb
 endif
 
 all: prepare_release release
