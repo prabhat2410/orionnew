@@ -1,17 +1,39 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: mongodb
+  labels:
+    name: mongodb
 spec:
+  ports:
+  - port: 27018
+    targetPort: 27018
+  clusterIP: None
+  selector:
+    role: mongodb
+
+---
+
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  serviceName: "mongodb"  
   template:
     metadata:
       labels:
-        app: mongodb
+        role: mongodb
+        environment: test
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
-      - name: mongodb
-        image: mongo
-        ports:
-        - name: mongodbport
-          containerPort: 27018
-          protocol: TCP
+        - name: mongo
+          image: mongo
+          command:
+            - mongod
+            - "--bind_ip"
+            - 0.0.0.0
+          ports:
+            - containerPort: 27018          
+
