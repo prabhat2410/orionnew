@@ -12,13 +12,8 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
@@ -55,6 +50,14 @@ stages:
       buildContext: .
       tag: Orion_UT
       registry: 127.0.0.1:34924
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   when:
     event: {}
 - name: deploy
@@ -62,23 +65,13 @@ stages:
   - applyYamlConfig:
       path: ./deployment.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   - applyYamlConfig:
       path: service.yaml
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
 - name: Test
   steps:
   - runScriptConfig:
