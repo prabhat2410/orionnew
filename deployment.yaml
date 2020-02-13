@@ -1,25 +1,25 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: broker
+  name: broker1
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
-        name: broker
+        name: broker1
     spec:
       containers:
       
-      - name: orion
-        image: 192.168.100.176:5000/orion-devoperation
+      - name: orion1
+        image: csp2-centos-1:5000/img_fiware-orion_v2.2.0:${CICD_EXECUTION_SEQUENCE}
         resources:
          limits:
+          memory: "1Gi"
+          cpu: "1000m"
+         requests:
           memory: "500Mi"
           cpu: "500m"
-         requests:
-          memory: "250Mi"
-          cpu: "250m"
         ports:
-        - containerPort: 1026
-        args: ["-dbhost", "mongo-0.mongo.ceph.svc.cluster.local:27017,mongo-1.mongo.ceph.svc.cluster.local:27017,mongo-2.mongo.ceph.svc.cluster.local:27017", "-rplSet" ,"rs0", "-logLevel", "DEBUG"]
+        - containerPort: 1027
+        args: ["-dbhost", "mongo-1.mongo,mongo-0.mongo,mongo-2.mongo", "-rplSet" ,"rs0", "-logLevel", "DEBUG"]
