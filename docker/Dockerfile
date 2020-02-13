@@ -115,4 +115,4 @@ RUN \
 
 WORKDIR /
 ENTRYPOINT ["/usr/bin/contextBroker","-fg", "-multiservice", "-ngsiv1Autocast" ]
-EXPOSE 1026
+EXPOSE 1026 1027
