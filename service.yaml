@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: orion-service
+  name: broker1-service
   labels:
     name: orionservice-nodeport-svc
 spec:
   type: NodePort
   ports:
-    - port: 1026
-      nodePort: 30180
+    - port: 1027
+      nodePort: 30150
       name: http
     - port: 443
-      nodePort: 31443
+      nodePort: 31553
       name: https
   selector:
-    name: broker
+    name: broker1
