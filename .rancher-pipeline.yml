@@ -11,22 +11,4 @@ stages:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
-    when:
-      branch: {}
-      event: {}
-  when:
-    event: {}
-- name: deploy
-  steps:
-  - applyYamlConfig:
-      path: ./deployment.yaml
-    when:
-      branch: {}
-      event: {}
-  - applyYamlConfig:
-      path: ./service.yaml
-    when:
-      branch: {}
-      event: {}
-timeout: 60
-notification: {}
+    
