@@ -6,47 +6,10 @@ stages:
       buildContext: .
       tag: img_fiware-orion_v2.2.0:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      #registry: 172.30.76.49:5000
       registry: csp2-centos-1:5000
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
-    when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
-- name: deploy
-  steps:
-  - applyYamlConfig:
-      path: ./orion_deployment.yaml
-    when:
-      branch: {}
-      event: {}
-  - applyYamlConfig:
-      path: ./orion_service.yml
-    when:
-      branch: {}
-      event: {}
-  when:
-    event: {}
-- name: test
-  steps:
-  - runScriptConfig:
-      image: python:latest
-      shellScript: |-
-        apt-get update
-        echo Y | apt-get -y install npm
-        npm -v
-        #sleep 300
-        npm install -g newman
-        newman run ./Context_State_in_Orion.postman_collection.json
-  when:
-    branch: {}
-    event: {}
 timeout: 60
 notification: {}
